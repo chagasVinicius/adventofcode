@@ -3,15 +3,18 @@
 module Main (main) where
 
 import Data.Char
+import System.IO
 
 -- usar reads :: [(Integer, String)]
 -- usar words
 
-checksum :: Int -> Int -> String -> Int
+checksum :: Int -> Int -> [Integer] -> Int
 checksum max min [] = max - min
 checksum max min (x0:x1:xs)
-  | digitToInt x0 >= digitToInt x1 = checksum (digitToInt x0) (digitToInt x1) xs
-  | digitToInt x0 < digitToInt x1 = checksum (digitToInt x1) (digitToInt x0) xs
+  | 
+
+slistToInt :: [String] -> [Integer]
+slistToInt (xs) = map (read :: String -> Integer) xs
 
 getLines :: IO [String]
 getLines = isEOF >>= \eof ->
@@ -24,4 +27,6 @@ getLines = isEOF >>= \eof ->
 main :: IO()
 main = do
   input <- getLines
-  print $ input -- map (read :: String -> Int) (map words input)
+  let sinput = map words input
+      iinput = map slistToInt sinput
+  print $ iinput
