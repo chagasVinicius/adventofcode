@@ -41,6 +41,14 @@ findsteps n = let squares = map square [1..n]
                   fststp = minimum $ map absoluteValue $(map (\x -> (x - n)) lmids)
                   otherstps = (length listSquares) - 1
               in fststp + otherstps
+------------------------------------------------------------------------------------------------------------------------------------
+---- hint RULLDDRRRUUULLLLDDDDRRRRR == 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7... 
+-- spirugyro :: Int -> Int
+
+-- fourPoints :: [(Char, Int)] -> [(Char, Int)]
+-- fourPoint (x0:x1:x2:xs) = 
+
+-----------------------------------------------------------------------------------------------------------------------------------
 
 main :: IO()
 main = do
