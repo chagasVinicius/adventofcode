@@ -42,11 +42,26 @@ findsteps n = let squares = map square [1..n]
                   otherstps = (length listSquares) - 1
               in fststp + otherstps
 ------------------------------------------------------------------------------------------------------------------------------------
----- hint RULLDDRRRUUULLLLDDDDRRRRR == 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7... 
--- spirugyro :: Int -> Int
+---- hint RULLDDRRRUUULLLLDDDDRRRRR == 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7...
+nextDir :: Char -> Char
+nextDir 'R' = 'U'
+nextDir 'U' = 'L'
+nextDir 'L' = 'D'
+nextDir 'D' = 'R'
 
--- fourPoints :: [(Char, Int)] -> [(Char, Int)]
--- fourPoint (x0:x1:x2:xs) = 
+step :: Int -> [(Int, Int, Int, Int, Char)] -> [(Int, Int, Int, Int, Char)]
+step 0 _ = [(0, 0, 1, 1, 'R')]
+step n (x0: xs) = let (x, y, val, steps, dir) = x0
+                      
+
+-- nextNumber :: Int -> Int
+-- nextNumber val = let result = -- somefunction
+--                  in if result < val
+--                     then
+--                       result
+--                     else
+--                       -- somefunction + 1
+
 
 -----------------------------------------------------------------------------------------------------------------------------------
 
@@ -55,3 +70,4 @@ main = do
   input <-getLine
   let number = read input :: Int
   print $ findsteps number
+  print $ 42
