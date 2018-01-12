@@ -42,25 +42,22 @@ findsteps n = let squares = map square [1..n]
                   otherstps = (length listSquares) - 1
               in fststp + otherstps
 ------------------------------------------------------------------------------------------------------------------------------------
----- hint RULLDDRRRUUULLLLDDDDRRRRR == 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7...
-nextDir :: Char -> Char
-nextDir 'R' = 'U'
-nextDir 'U' = 'L'
-nextDir 'L' = 'D'
-nextDir 'D' = 'R'
+-- HINT Look Data.Map Haskell we can create a Map with the coords (x,y) as keys and the values of each cell
+timesDir :: (Int, Char) -> (Int, Char)
+timesDir (count, dir)
+  | dir == 'R' = (count, 'U')
+  | dir == 'U' = (count + 1, 'L')
+  | dir == 'L' = (count, 'D')
+  | dir == 'D' = (count + 1, 'R')
 
-step :: Int -> [(Int, Int, Int, Int, Char)] -> [(Int, Int, Int, Int, Char)]
-step 0 _ = [(0, 0, 1, 1, 'R')]
-step n (x0: xs) = let (x, y, val, steps, dir) = x0
-                      
+walking :: Char -> (Int, Int) -> (Int, Int)
+walking 'R' (x,y) = (x + 1, y)
+walking 'L' (x,y) = (x - 1, y)
+walking 'U' (x,y) = (x, y + 1)
+wlaking 'D' (x,y) = (x, y -1)
 
--- nextNumber :: Int -> Int
--- nextNumber val = let result = -- somefunction
---                  in if result < val
---                     then
---                       result
---                     else
---                       -- somefunction + 1
+timesSteps :: [(Int, Char)] -> (Int, Char)
+timesSteps (x0:xs) = timesDir x0
 
 
 -----------------------------------------------------------------------------------------------------------------------------------
